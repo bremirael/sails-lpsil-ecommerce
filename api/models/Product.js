@@ -19,6 +19,8 @@ module.exports = {
 
     image : { type: 'string' },
 
+    new : { type: 'integer'},
+
     categoryid: {
     	model: 'category'
     }

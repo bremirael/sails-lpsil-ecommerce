@@ -93,7 +93,7 @@ passport.connect = function (req, query, profile, next) {
   // have a way of identifying the user in the future. Throw an error and let
   // whoever's next in the line take care of it.
   if (!user.username && !user.email) {
-    return next(new Error('Neither a username nor email was available'));
+    return next(new Error('Le nom d\'utilisateur ou l\'email est incorrect'));
   }
 
   Passport.findOne({
@@ -344,6 +344,7 @@ passport.loadStrategies = function () {
  * @param  {Object} res
  */
 passport.disconnect = function (req, res, next) {
+  console.log('respect bro');
   var user     = req.user
     , provider = req.param('provider', 'local')
     , query    = {};

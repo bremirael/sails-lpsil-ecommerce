@@ -9,7 +9,9 @@ module.exports = {
 	create: function(req, res) {
 
 		var rp = require('fs.realpath');
-		var dir = '../../assets/uploads/';
+		var dir = '../../assets/images/';
+		// permet d'éviter d'avoir un même nom de fichier
+		var ran = Math.random().toString(5); 
 		var real;
 		
 
@@ -17,23 +19,28 @@ module.exports = {
     			// don't allow the total upload size to exceed ~100MB
     			maxBytes: 100000000,
     			// set the directory
-    			dirname: dir
+    			//dirname: dir
+    			saveAs:function(file, handler) {
+       						handler(null,dir+"/"+ran+'_'+file.filename);
+   						}	
   			},function (err, uploadedFile) {
    	 			if (err) return res.serverError(err);
     			// logging the filename
 
 
-    			var up = uploadedFile[0].filename;
-    			var dirBase = dir.toString() + up.toString()
+    			//var up = uploadedFile[0].filename;
+    			//var dirBase = dir.toString() + up.toString()
 
-    			real = rp.realpathSync(uploadedFile[0].fd.toString());
+    			//real = rp.realpathSync(uploadedFile[0].fd.toString());
+
+    			console.log(uploadedFile);
 
     			Product.create({ 
 					reference: Math.random().toString(36),
 					title: req.param('title'), 
 					price: req.param('price'),
 					description: req.param('description'),
-					image: real.toString(),
+					image: ran+'_'+uploadedFile[0].filename,
 					categoryid: 1 
 				} ,function(err, created) {
 				 	if(!err) {
@@ -48,25 +55,24 @@ module.exports = {
     			//return res.json({msg : 'no problem'});
 
   		});
+	},
 
-		
+	/* getProduct: function(req, res) {
+		Product.find({}, function(err, found) {
+			res.view('article', {products: found});
+		});
+	} */
 
-		
-		/*Product.create({ 
-				reference: Math.random().toString(36),
-				title: req.param('title'), 
-				price: req.param('price'),
-				description: req.param('description'),
-				image: real.toString(),
-				categoryid: 1 
-			} ,function(err, created) {
-				 if(!err) {
-	        		console.log('Produit créé : '+created.title+', ayant pour reference : '+created.reference+'.');
-	        		res.redirect('/');
-	   			 } else {
-	       			 return err;
-	    		 }
 
-		});*/
-	}
+	getProduct: function(req, res) {
+		Product.query('SELECT * FROM product WHERE new = 1', function(err, result){
+			if(err) return res.serverError(err);
+
+			console.log(result);
+
+			res.view('article', {articles: result});
+		});
+  	}
+
+
 };

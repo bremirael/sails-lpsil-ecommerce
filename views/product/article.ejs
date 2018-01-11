@@ -1,0 +1,33 @@
+
+    <div class="row">
+    	<% articles.forEach(function(art){ %>
+	    	<div class="col-md-12">
+				<div class="col-sm-6 col-md-4">
+					<div class="thumbnail" >
+						<h4 class="text-center"><span class="label label-info"><% if (art.new = 1){%> Nouveauté <% } %> <% else { %> Produit <% } %></span></h4>
+						<img src="../../assets/uploads/1f830d39-3757-4ab7-9c1b-eb55cee0330e.png">
+						<div class="caption">
+							<div class="row">
+								<div class="col-md-6 col-xs-6">
+									<h3><%= art.title %></h3>
+								</div>
+								<div class="col-md-6 col-xs-6 price">
+									<h3>
+									<label><%= art.price %></label></h3>
+								</div>
+							</div>
+							<p><%= art.description %></p>
+							<div class="row">
+								<div class="col-md-6">
+									<a class="btn btn-primary btn-product"><span class="glyphicon glyphicon-thumbs-up"></span> Like</a> 
+								</div>
+								<div class="col-md-6">
+									<a href="#" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span> Buy</a></div>
+							</div>
+
+							<p> </p>
+						</div>
+					</div>
+				</div>
+		<% }); %>
+	</div>

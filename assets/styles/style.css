@@ -251,6 +251,12 @@ html, body {
 }
 
 
+/** Afficher les produitS **/
+.btn-product{
+  width: 100%;
+}
+
+
 
 /***** Media queries *****/
 

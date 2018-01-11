@@ -36,6 +36,7 @@ module.exports.routes = {
   },
 
   'post /product/create': 'ProductController.create',
+  'get /product/read': 'ProductController.getProduct',
 
   'get /login': 'AuthController.login',
   'get /logout': 'AuthController.logout',
