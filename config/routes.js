@@ -38,7 +38,30 @@ module.exports.routes = {
   'post /product/create': 'ProductController.create',
   'get /product/read': 'ProductController.getProduct',
 
-  'get /login': 'AuthController.login',
+
+  // register
+  'get /register': {
+    view: 'register'
+  },
+  'post /register/create' : 'UserController.register',
+
+  //Connection
+  'get /login': {
+    view: 'login'
+  },
+  'post /login/connect': 'UserController.login',
+
+  'get /logout': 'UserController.logout',
+
+  'get /admin': {
+    view: 'admin'
+  },
+
+  'get /admin/adminUser': 'AdminController.printUser',
+  'get /admin/adminUserEdit/:id' : 'AdminController.editUser'
+  //'post /admin/updateUser': 'AdminController.updateUser'
+
+  /*'get /login': 'AuthController.login',
   'get /logout': 'AuthController.logout',
   'get /register': 'AuthController.register',
   'post /auth/local': 'AuthController.callback',
@@ -47,7 +70,7 @@ module.exports.routes = {
    
   'get /auth/:provider': 'AuthController.provider',
   'get /auth/:provider/callback': 'AuthController.callback',
-  'get /auth/:provider/:action': 'AuthController.callback', 
+  'get /auth/:provider/:action': 'AuthController.callback', */
 
 
 };

@@ -1,0 +1,44 @@
+<div class="row">
+    
+    <h2>Utilisateurs</h2>
+    
+    
+        <div class="pull-right">
+    
+        <button href="/" class="btn btn-default btn-success btn-md" data-toggle="modal" ><i class="glyphicon glyphicon-plus"></i> Ajouter</button>
+            
+        </div>    
+    </div>    
+    
+    
+    <div class="row">
+        
+        <table class="table table-bordered table-striped">
+            <thead >
+                <tr class="bg-info ">
+                    <th></th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Date de création</th>
+                </tr>
+            </thead>
+            
+            <tbody id="list-itens">
+            <% users.forEach(function(user){ %>                
+                <tr>
+                    <td style="width:140px; text-align: center">
+                        <a href="/admin/adminUserEdit/<%=user.id%>" class="btn btn-sm btn-default" ><i class="icon-trash glyphicon glyphicon-edit text-primary"></i></a>
+                        <button class="btn btn-sm btn-default"><i class="icon-trash glyphicon glyphicon-trash text-danger"></i></button>
+                    </td>
+                    <td><%= user.username %></td>
+                    <td><%= user.email %></td>
+                    <td><%= user.createdAt %></td>
+                </tr>
+            <% }); %>    
+            </tbody>    
+            
+        </table>
+        
+        
+        
+    </div>

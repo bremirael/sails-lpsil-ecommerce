@@ -1,0 +1,32 @@
+<div class="col-sm-6 col-sm-offset-3 text">
+    <div class="form-box">
+        <div class="form-top">
+            <div class="form-top-left">
+                <h3>Formulaire d'inscription</h3>
+                <p>Entrez un identifiant et un mot de passe pour créer un compte</p>
+            </div>
+            <div class="form-top-right">
+                <i class="fa fa-pencil"></i>
+            </div>
+        </div>
+        <div class="form-bottom">
+            <% users.forEach(function(user){ %>
+            <form role="form" action="/hh" method="post" class="registration-form">
+                <div class="form-group">
+                    <label class="sr-only" for="form-first-name">Identifiant</label>
+                    <input type="text" name="username" placeholder="<%= user.username %>" class="form-first-name form-control" id="form-first-name">
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="form-last-name"></label>
+                    <input type="password" name="password" placeholder="<%= user.password %>" class="form-last-name form-control" id="form-last-name">
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="form-email"></label>
+                    <input type="text" name="email" placeholder="<%= user.email %>" class="form-email form-control" id="form-email">
+                </div>
+                <button type="submit" class="btn btn-primary">Enregistrer</button>
+            </form>
+            <% }); %>    
+        </div>
+    </div>
+</div>

@@ -256,7 +256,19 @@ html, body {
   width: 100%;
 }
 
+.table {
+    border: none;
+}
 
+.table-definition thead th:first-child {
+    pointer-events: none;
+    background: white;
+    border: none;
+}
+
+.table td {
+    vertical-align: middle;
+}
 
 /***** Media queries *****/
 
