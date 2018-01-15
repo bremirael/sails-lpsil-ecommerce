@@ -17,24 +17,42 @@ module.exports = {
     },
 
     editUser: function (req, res, next) {
-    	User.query('SELECT * FROM user WHERE id = 1', function(err, result){
+    	User.query('SELECT * FROM user WHERE id = '+req.allParams('id').id, function(err, result){
     		console.log(result);
     		if(err) return res.serverError(err);
 
 			res.view('adminUserEdit', {users: result});
     	});
-    	/*User.findOne(req.param('id'), function foundUser (err, result) {
-    		if (err) {
-    			console.log(err);
-    			return next(err);
-    		}
-    		if (!user) return next();
+    },
 
-    		console.log(user);
+    updateUser: function (req, res, next) {
 
-    		res.view('adminUserEdit', {user: user})
-    	}); */
-    }
+    	User.update({ id : req.param("id")},
+        {
+            email: req.param("email"),
+            name: req.param("name"),
+            password: req.param()
+        }).exec(function (err, updatedUser){
+            if (err) return res.negotiate(err);
+ 			else return res.redirect('/admin');
+        });
+    },
 
+    createUser: function(req, res) {
+    	console.log(req.param('isAdmin'));
+		User.create({ 
+			username: req.param('username'),
+			email: req.param('email'), 
+			password: req.param('password'),
+			isAdmin: parseInt(req.param('isAdmin'))
+		} ,function(err, created) {
+			if(!err) {
+	        	console.log('Utilisateur créé : '+created.username+', password '+created.password+' isAdmin :'+created.isAdmin+'.');
+	        	res.redirect('/admin');
+	   		} else {
+	       		return err;
+	    	}
+
+		});
+	},
 };
-

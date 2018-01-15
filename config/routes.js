@@ -58,7 +58,11 @@ module.exports.routes = {
   },
 
   'get /admin/adminUser': 'AdminController.printUser',
-  'get /admin/adminUserEdit/:id' : 'AdminController.editUser'
+  'get /admin/adminUserEdit/:id': 'AdminController.editUser',
+  'get /admin/userCreate': {view: 'adminUserCreate'},
+  'post /admin/adminUserCreate': 'AdminController.createUser',
+
+  'post /admin/adminUserUpdate': 'AdminController.updateUser'
   //'post /admin/updateUser': 'AdminController.updateUser'
 
   /*'get /login': 'AuthController.login',
