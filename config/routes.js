@@ -60,10 +60,20 @@ module.exports.routes = {
   'get /admin/adminUser': 'AdminController.printUser',
   'get /admin/adminUserEdit/:id': 'AdminController.editUser',
   'get /admin/userCreate': {view: 'adminUserCreate'},
+  'post /admin/adminUserDelete/:id': 'AdminController.deleteUser',
   'post /admin/adminUserCreate': 'AdminController.createUser',
 
-  'post /admin/adminUserUpdate': 'AdminController.updateUser'
-  //'post /admin/updateUser': 'AdminController.updateUser'
+  'post /admin/adminUserUpdate': 'AdminController.updateUser',
+
+
+  'post /admin/adminCategoryCreate': 'AdminController.createCategory',
+  'get /admin/adminCategory': 'AdminController.showCategory',
+  'get /admin/adminCategoryEdit/:id': 'AdminController.editCategory',
+  'get /admin/categoryCreate': {view: 'adminCategoryCreate'},
+  'post /admin/adminCategoryCreate': 'AdminController.createCategory',
+
+  'post /admin/adminCategoryUpdate': 'AdminController.updateUser'
+  //'post /admin/updateUser': 'AdminController.updateUser'1
 
   /*'get /login': 'AuthController.login',
   'get /logout': 'AuthController.logout',

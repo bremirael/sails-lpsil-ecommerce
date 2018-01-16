@@ -2,13 +2,14 @@
     
     <h2>Utilisateurs</h2>
     
-    
-        <div class="pull-right">
-    
-        <a href="/admin/userCreate" class="btn btn-default btn-success btn-md" data-toggle="modal" ><i class="glyphicon glyphicon-plus"></i> Ajouter</a>
-            
-        </div>    
+
+    <div class="pull-right">
+
+    <a href="/admin/userCreate" class="btn btn-default btn-success btn-md" data-toggle="modal" ><i class="glyphicon glyphicon-plus"></i> Ajouter</a>
+        
     </div>    
+
+</div>    
     
     
     <div class="row">
@@ -28,7 +29,7 @@
                 <tr>
                     <td style="width:140px; text-align: center">
                         <a href="/admin/adminUserEdit/<%=user.id%>" class="btn btn-sm btn-default" ><i class="icon-trash glyphicon glyphicon-edit text-primary"></i></a>
-                        <button class="btn btn-sm btn-default"><i class="icon-trash glyphicon glyphicon-trash text-danger"></i></button>
+                        <a href="/admin/adminUserDelete/<%=user.id%>" onclick="getVisible()" class="btn btn-sm btn-default"><i class="icon-trash glyphicon glyphicon-trash text-danger"></i></a>
                     </td>
                     <td><%= user.username %></td>
                     <td><%= user.email %></td>
@@ -42,3 +43,15 @@
         
         
     </div>
+
+    <div style="visibility: hidden" id="flash-delete-user" class="row">
+    	<div class="alert alert-danger">
+  			<strong>Utilisateur Supprimé !!</strong>
+		</div>	
+    </div>
+ <script type="text/javascript">
+ 	function getVisible(){
+ 		document.getElementById("flash-delete-user").visibility = visible;	
+ 	}
+ 	
+ </script>

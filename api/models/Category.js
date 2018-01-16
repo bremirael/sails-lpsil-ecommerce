@@ -10,11 +10,7 @@ module.exports = {
   attributes: {
 
     title : { type: 'string', unique: true },
-  
-    products: {
-    	collection: 'product',
-    	via: 'categoryid'
-    }
+  	
   }
 };
 

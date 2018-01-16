@@ -4,9 +4,9 @@
       <h4>Outils d'administration</h4>
       <ul class="nav nav-pills nav-stacked">
         <li class="active"><a href="/admin">Home</a></li>
-        <li><a id="product-id" href="/admin/product">Produits</a></li>
-        <li><a id="user-id" style="cursor:pointer;" onclick="getPage()">Utilisateur</button></li>
-        <li><a href="">Catégorie</a></li>
+        <li><a id="user-id" style="cursor:pointer;" onclick="getUser()">Utilisateur</a></li>
+        <li><a id="product-id" href="/admin/product">Produits</a></li>  
+        <li><a id="category-id" style="cursor: pointer" onclick="getCategory()">Catégorie</a></li>
       </ul><br>
     </div>
 
@@ -14,7 +14,6 @@
 
         
     </div>
-  </div>
 </div>
 
 <script>
@@ -39,7 +38,7 @@
     return xhr;
   }
 
-  function getPage() {
+  function getUser() {
     var xhr = getXMLHttpRequest();
 
     xhr.onreadystatechange = function() {
@@ -49,6 +48,19 @@
     };
 
     xhr.open("GET", "/admin/adminUser", true);
+    xhr.send(null);
+  }
+
+  function getCategory() {
+    var xhr = getXMLHttpRequest();
+
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
+        document.getElementById("projection").innerHTML = xhr.responseText;
+      }
+    };
+
+    xhr.open("GET", "/admin/adminCategory", true);
     xhr.send(null);
   }
 

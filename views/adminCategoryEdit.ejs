@@ -1,0 +1,24 @@
+<div class="col-sm-6 col-sm-offset-3 text">
+    <div class="form-box">
+        <div class="form-top">
+            <div class="form-top-left">
+                <h3>Modification Utilisateur</h3>
+            </div>
+            <div class="form-top-right">
+                <i class="fa fa-pencil"></i>
+            </div>
+        </div>
+        <div class="form-bottom">
+            <% categories.forEach(function(category){ %>
+            <form role="form" action="/admin/adminCategoryUpdate" method="post" class="registration-form">
+                <div class="form-group">
+                    <label class="sr-only" for="form-first-name">Identifiant</label>
+                    <input type="text" name="title" placeholder="<%= category.title %>" value="<%= category.title %>" class="form-first-name form-control" id="form-first-name">
+                </div>
+                <input type="hidden" name="id" value="<%= category.id %>">
+                <button type="submit" class="btn btn-primary">Enregistrer</button>
+            </form>
+            <% }); %>    
+        </div>
+    </div>
+</div>

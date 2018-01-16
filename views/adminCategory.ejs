@@ -1,0 +1,41 @@
+<div class="row">
+    
+    <h2>Catégories</h2>
+    
+
+    <div class="pull-right">
+
+    <a href="/admin/categoryCreate" class="btn btn-default btn-success btn-md" data-toggle="modal" ><i class="glyphicon glyphicon-plus"></i> Ajouter</a>
+        
+    </div>    
+
+</div>    
+    
+    
+    <div class="row">
+        
+        <table class="table table-bordered table-striped">
+            <thead >
+                <tr class="bg-info ">
+                    <th></th>
+                    <th>Nom</th>
+                </tr>
+            </thead>
+            
+            <tbody id="list-itens">
+            <% categories.forEach(function(category){ %>                
+                <tr>
+                    <td style="width:140px; text-align: center">
+                        <a href="/admin/adminCategoryEdit/<%=category.id%>" class="btn btn-sm btn-default" ><i class="icon-trash glyphicon glyphicon-edit text-primary"></i></a>
+                        <button class="btn btn-sm btn-default"><i class="icon-trash glyphicon glyphicon-trash text-danger"></i></button>
+                    </td>
+                    <td><%= category.title %></td>
+                </tr>
+            <% }); %>
+            </tbody>    
+            
+        </table>
+        
+        
+        
+    </div>

@@ -21,9 +21,7 @@ module.exports = {
 
     new : { type: 'integer'},
 
-    categoryid: {
-    	model: 'category'
-    }
+    categoryid: { type: 'integer'}
   }
 };
 

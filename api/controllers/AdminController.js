@@ -29,9 +29,9 @@ module.exports = {
 
     	User.update({ id : req.param("id")},
         {
-            email: req.param("email"),
-            name: req.param("name"),
-            password: req.param()
+            email: req.param("email").toString(),
+            name: req.param("name").toString(),
+            password: req.param("password").toString()
         }).exec(function (err, updatedUser){
             if (err) return res.negotiate(err);
  			else return res.redirect('/admin');
@@ -44,7 +44,7 @@ module.exports = {
 			username: req.param('username'),
 			email: req.param('email'), 
 			password: req.param('password'),
-			isAdmin: parseInt(req.param('isAdmin'))
+			isAdmin: req.param('type')
 		} ,function(err, created) {
 			if(!err) {
 	        	console.log('Utilisateur créé : '+created.username+', password '+created.password+' isAdmin :'+created.isAdmin+'.');
@@ -55,4 +55,61 @@ module.exports = {
 
 		});
 	},
+
+	deleteUser: function(req, res) {
+		User.destroy({id: req.allParams('id').id}).exec(function (err){
+  			if (err) {
+    			return res.negotiate(err);
+  			}
+  			sails.log('Utilisateur effacé.' + req.name);
+  			return res.ok();
+		});
+	},
+
+	/************
+	 * CATEGORY 
+	 ***********/
+
+	showCategory: function (req, res, next) {
+    	Category.query('SELECT * FROM category', function(err, result){
+			if(err) return res.serverError(err);
+			console.log(result);
+			res.view('adminCategory', {categories: result, layout: null});
+		});        
+    },
+
+    createCategory: function(req, res) {
+		Category.create({ 
+			title: req.param('title'),
+		} ,function(err, created) {
+			if(!err) {
+	        	console.log('Catégorie créé : '+created.title+'.');
+	        	res.redirect('/admin');
+	   		} else {
+	       		return err;
+	    	}
+
+		});
+	},
+
+	editCategory: function (req, res, next) {
+    	Category.query('SELECT * FROM category WHERE id = '+req.allParams('id').id, function(err, result){
+    		console.log(result);
+    		if(err) return res.serverError(err);
+
+			res.view('adminCategoryEdit', {categories: result});
+    	});
+    },
+
+
+    updateCategory: function (req, res, next) {
+
+    	Category.update({ id : req.param("id")},
+    	{
+    		title: req.param("title")
+    	}).exec(function (err, updatedUser) {
+            if (err) return res.negotiate(err);
+ 			else return res.redirect('/admin');
+        });
+    },
 };

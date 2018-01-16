@@ -2,8 +2,7 @@
     <div class="form-box">
         <div class="form-top">
             <div class="form-top-left">
-                <h3>Formulaire d'inscription</h3>
-                <p>Entrez un identifiant et un mot de passe pour créer un compte</p>
+                <h3>Création compte utilisateur</h3>
             </div>
             <div class="form-top-right">
                 <i class="fa fa-pencil"></i>
@@ -23,12 +22,17 @@
                     <label class="sr-only" for="form-email">Email</label>
                     <input type="text" name="email" placeholder="Email..." class="form-email form-control" id="form-email">
                 </div>
-                <div class="form-group">
-                    <label for="role-select">Définir Rôle</label>
-                    <select multiple class="form-control" id="role-select">
-                      <option name="isAdmin" value="0">Utilisateur</option>
-                      <option name="isAdmin" value="1">Administrateur</option>
-                    </select>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="type" id="utilisateur-radio" value="0" checked>
+                    <label class="form-check-label" for="utilisateur-radio">
+                        Compte utilisateur
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="type" id="admin-radio" value="1">
+                    <label class="form-check-label" for="admin-radio">
+                        Administrateur
+                    </label>
                 </div>
                 <button type="submit" class="btn btn-primary">Enregistrer</button>
             </form>
