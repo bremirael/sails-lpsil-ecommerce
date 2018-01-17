@@ -5,7 +5,7 @@
       <ul class="nav nav-pills nav-stacked">
         <li class="active"><a href="/admin">Home</a></li>
         <li><a id="user-id" style="cursor:pointer;" onclick="getUser()">Utilisateur</a></li>
-        <li><a id="product-id" href="/admin/product">Produits</a></li>  
+        <li><a id="product-id" style="cursor:pointer;" onclick="getProduct()">Produits</a></li>
         <li><a id="category-id" style="cursor: pointer" onclick="getCategory()">Catégorie</a></li>
       </ul><br>
     </div>
@@ -61,6 +61,19 @@
     };
 
     xhr.open("GET", "/admin/adminCategory", true);
+    xhr.send(null);
+  }
+
+  function getProduct() {
+    var xhr = getXMLHttpRequest();
+
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
+        document.getElementById("projection").innerHTML = xhr.responseText;
+      }
+    };
+
+    xhr.open("GET", "/admin/adminProduct", true);
     xhr.send(null);
   }
 

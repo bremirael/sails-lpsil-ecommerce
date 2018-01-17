@@ -29,9 +29,9 @@ module.exports = {
 
     	User.update({ id : req.param("id")},
         {
-            email: req.param("email").toString(),
-            name: req.param("name").toString(),
-            password: req.param("password").toString()
+            email: req.param("email"),
+            name: req.param("username"),
+            password: req.param("password")
         }).exec(function (err, updatedUser){
             if (err) return res.negotiate(err);
  			else return res.redirect('/admin');
@@ -57,14 +57,16 @@ module.exports = {
 	},
 
 	deleteUser: function(req, res) {
-		User.destroy({id: req.allParams('id').id}).exec(function (err){
+		User.destroy({
+  			id: req.allParams('id').id
+		}).exec(function (err){
   			if (err) {
     			return res.negotiate(err);
   			}
-  			sails.log('Utilisateur effacé.' + req.name);
-  			return res.ok();
-		});
-	},
+  			sails.log('Deleted user !!');
+  			return res.redirect('/admin');
+		});      
+    },
 
 	/************
 	 * CATEGORY 
@@ -111,5 +113,17 @@ module.exports = {
             if (err) return res.negotiate(err);
  			else return res.redirect('/admin');
         });
+    },
+
+    deleteCategory: function(req, res) {
+		Category.destroy({
+  			id: req.allParams('id').id
+		}).exec(function (err){
+  			if (err) {
+    			return res.negotiate(err);
+  			}
+  			sails.log('Category deleted !!');
+  			return res.redirect('/admin');
+		});      
     },
 };

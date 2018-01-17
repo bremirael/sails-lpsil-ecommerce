@@ -4,6 +4,16 @@ html, body {
   font-family: 'Lato', serif;  
 }
 
+.jumbotron {
+    margin-bottom: 0px;
+    background-image: url(../images/aquamain.jpg);
+    background-position: 0% 25%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    text-shadow: black 0.3em 0.3em 0.3em;
+}
+
 .navbar-default {
   font-size: 1.15em;
   font-weight: 400;
@@ -208,7 +218,6 @@ html, body {
   color: #fff;
   line-height: 100px;
   text-align: right;
-  opacity: 0.3;
 }
 
 .form-bottom {

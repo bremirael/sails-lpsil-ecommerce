@@ -35,8 +35,8 @@ module.exports.routes = {
     view: 'product/product'
   },
 
-  'post /product/create': 'ProductController.create',
-  'get /product/read': 'ProductController.getProduct',
+  /*'post /product/create': 'ProductController.create', */
+  'get /product/new': 'ProductController.getNewProduct',
 
 
   // register
@@ -62,17 +62,21 @@ module.exports.routes = {
   'get /admin/userCreate': {view: 'adminUserCreate'},
   'post /admin/adminUserDelete/:id': 'AdminController.deleteUser',
   'post /admin/adminUserCreate': 'AdminController.createUser',
-
   'post /admin/adminUserUpdate': 'AdminController.updateUser',
 
 
-  'post /admin/adminCategoryCreate': 'AdminController.createCategory',
   'get /admin/adminCategory': 'AdminController.showCategory',
   'get /admin/adminCategoryEdit/:id': 'AdminController.editCategory',
   'get /admin/categoryCreate': {view: 'adminCategoryCreate'},
+  'post /admin/adminCategoryDelete/:id': 'AdminController.deleteCategory',
   'post /admin/adminCategoryCreate': 'AdminController.createCategory',
+  'post /admin/adminCategoryUpdate': 'AdminController.updateUser',
 
-  'post /admin/adminCategoryUpdate': 'AdminController.updateUser'
+
+  'get /admin/adminProduct': 'ProductController.showProduct',
+  'get /admin/adminProductCreate': 'ProductController.showCreate',
+  'post /product/create': 'ProductController.create',
+
   //'post /admin/updateUser': 'AdminController.updateUser'1
 
   /*'get /login': 'AuthController.login',

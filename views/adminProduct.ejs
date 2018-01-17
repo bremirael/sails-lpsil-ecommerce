@@ -1,11 +1,11 @@
 <div class="row">
     
-    <h2>Catégories</h2>
+    <h2>Produits</h2>
     
 
     <div class="pull-right">
 
-    <a href="/admin/categoryCreate" class="btn btn-default btn-success btn-md" data-toggle="modal" ><i class="glyphicon glyphicon-plus"></i> Ajouter</a>
+    <a href="/admin/adminProductCreate" class="btn btn-default btn-success btn-md" data-toggle="modal" ><i class="glyphicon glyphicon-plus"></i> Ajouter</a>
         
     </div>    
 
@@ -23,16 +23,16 @@
             </thead>
             
             <tbody id="list-itens">
-            <% categories.forEach(function(category){ %>                
+            <% products.forEach(function(product){ %>                
                 <tr>
                     <td style="width:140px; text-align: center">
-                        <a href="/admin/adminCategoryEdit/<%=category.id%>" class="btn btn-sm btn-default" ><i class="icon-trash glyphicon glyphicon-edit text-primary"></i></a>
-                        <form action="/admin/adminCategoryDelete/<%=category.id%>" method="POST">
+                        <a href="/admin/adminProductEdit/<%=product.id%>" class="btn btn-sm btn-default" ><i class="icon-trash glyphicon glyphicon-edit text-primary"></i></a>
+                        <form action="/admin/adminProductDelete/<%=product.id%>" method="POST">
                             <button class="btn btn-sm btn-default"><i class="icon-trash glyphicon glyphicon-trash text-danger"></i></button>
                         </form>
                     </td>
                     
-                    <td><%= category.title %></td>
+                    <td><%= product.title %></td>
                 </tr>
             <% }); %>
             </tbody>    

@@ -6,6 +6,27 @@
  */
 
 module.exports = {
+
+
+
+	showCreate: function(req, res) {
+		Category.query('SELECT * FROM category', function(err, result){
+			if(err) return res.serverError(err);
+
+			res.view('adminProductCreate', {categories: result});
+		});
+	},
+
+	showProduct: function (req, res, next) {
+    	Product.query('SELECT * FROM product', function(err, result){
+			if(err) return res.serverError(err);
+			console.log(result);
+			res.view('adminProduct', {products: result, layout: null});
+		});        
+    },
+
+
+
 	create: function(req, res) {
 
 		var rp = require('fs.realpath');
@@ -41,7 +62,8 @@ module.exports = {
 					price: req.param('price'),
 					description: req.param('description'),
 					image: ran+'_'+uploadedFile[0].filename,
-					categoryid: 1 
+					new: req.param('new'),
+					categoryid: req.param('category'),
 				} ,function(err, created) {
 				 	if(!err) {
 	        			console.log('Produit créé : '+created.title+', ayant pour reference : '+created.reference+'.');
@@ -64,7 +86,7 @@ module.exports = {
 	} */
 
 
-	getProduct: function(req, res) {
+	getNewProduct: function(req, res) {
 		Product.query('SELECT * FROM product WHERE new = 1', function(err, result){
 			if(err) return res.serverError(err);
 

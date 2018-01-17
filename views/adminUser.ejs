@@ -29,7 +29,9 @@
                 <tr>
                     <td style="width:140px; text-align: center">
                         <a href="/admin/adminUserEdit/<%=user.id%>" class="btn btn-sm btn-default" ><i class="icon-trash glyphicon glyphicon-edit text-primary"></i></a>
-                        <a href="/admin/adminUserDelete/<%=user.id%>" onclick="getVisible()" class="btn btn-sm btn-default"><i class="icon-trash glyphicon glyphicon-trash text-danger"></i></a>
+                        <form action="/admin/adminUserDelete/<%=user.id%>" method="POST">
+                            <button type="submit" style="cursor:pointer;" class="btn btn-sm btn-default"><i class="icon-trash glyphicon glyphicon-trash text-danger"></i></button>
+                        </form>
                     </td>
                     <td><%= user.username %></td>
                     <td><%= user.email %></td>
@@ -49,9 +51,3 @@
   			<strong>Utilisateur Supprimé !!</strong>
 		</div>	
     </div>
- <script type="text/javascript">
- 	function getVisible(){
- 		document.getElementById("flash-delete-user").visibility = visible;	
- 	}
- 	
- </script>
