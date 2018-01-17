@@ -5,7 +5,7 @@
                 <h3>Modification Utilisateur</h3>
             </div>
             <div class="form-top-right">
-                <button href="/admin" type="submit" class="btn btn-danger">Annuler</button>
+                <a href="/admin" type="submit" class="btn btn-danger">Annuler</a>
             </div>
         </div>
         <div class="form-bottom">
@@ -13,7 +13,7 @@
             <form role="form" action="/admin/adminCategoryUpdate" method="post" class="registration-form">
                 <div class="form-group">
                     <label class="sr-only" for="form-first-name">Identifiant</label>
-                    <input type="text" name="title" placeholder="<%= category.title %>" value="" class="form-first-name form-control" id="form-first-name" required>
+                    <input type="text" name="nom" placeholder="<%= category.nom %>" value="" class="form-first-name form-control" id="form-first-name" required>
                 </div>
                 <input type="hidden" name="id" value="<%= category.id %>">
                 <button type="submit" class="btn btn-primary">Enregistrer</button>

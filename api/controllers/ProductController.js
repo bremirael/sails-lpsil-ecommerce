@@ -94,6 +94,18 @@ module.exports = {
 
 			res.view('article', {articles: result});
 		});
+  	},
+
+  	showProductByCategory: function(req, res) {
+  		var string = 'SELECT * FROM product INNER JOIN category ON product.categoryid = category.id WHERE categoryid = '+req.allParams('id').id
+  		console.log(string);
+  		Product.query(string, function(err, result){
+			if(err) return res.serverError(err);
+
+			console.log(result);
+
+			res.view('produit', {articles: result});
+		});
   	}
 
 

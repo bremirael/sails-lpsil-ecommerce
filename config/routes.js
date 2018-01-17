@@ -37,7 +37,8 @@ module.exports.routes = {
 
   /*'post /product/create': 'ProductController.create', */
   'get /product/new': 'ProductController.getNewProduct',
-
+  'get /layout/category': 'CategoryController.show',
+  'get /layout/product/:id': 'ProductController.showProductByCategory',
 
   // register
   'get /register': {

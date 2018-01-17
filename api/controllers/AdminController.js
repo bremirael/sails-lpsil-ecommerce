@@ -30,7 +30,7 @@ module.exports = {
     	User.update({ id : req.param("id")},
         {
             email: req.param("email"),
-            name: req.param("username"),
+            username: req.param("username"),
             password: req.param("password")
         }).exec(function (err, updatedUser){
             if (err) return res.negotiate(err);
@@ -82,10 +82,10 @@ module.exports = {
 
     createCategory: function(req, res) {
 		Category.create({ 
-			title: req.param('title'),
+			nom: req.param('title'),
 		} ,function(err, created) {
 			if(!err) {
-	        	console.log('Catégorie créé : '+created.title+'.');
+	        	console.log('Catégorie créé : '+created.nom+'.');
 	        	res.redirect('/admin');
 	   		} else {
 	       		return err;
@@ -108,7 +108,7 @@ module.exports = {
 
     	Category.update({ id : req.param("id")},
     	{
-    		title: req.param("title")
+    		nom: req.param("nom")
     	}).exec(function (err, updatedUser) {
             if (err) return res.negotiate(err);
  			else return res.redirect('/admin');
